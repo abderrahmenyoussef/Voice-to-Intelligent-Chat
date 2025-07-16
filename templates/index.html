@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice to Intelligent Chat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎙️ Voice to Intelligent Chat</h1>
+            <p>Speak instead of typing - powered by WhisperX and LLAMA</p>
+        </header>
+
+        <div class="chat-container">
+            <div class="chat-messages" id="chatMessages">
+                <div class="message ai-message">
+                    <div class="message-content">
+                        <strong>AI Assistant:</strong> Hello! You can speak to me by clicking the microphone button or uploading an audio file. I'll transcribe your voice and respond to your questions.
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="voice-controls">
+                    <button id="recordBtn" class="btn record-btn">
+                        <span class="btn-icon">🎙️</span>
+                        <span class="btn-text">Start Recording</span>
+                    </button>
+                    
+                    <div class="file-upload">
+                        <input type="file" id="audioFile" accept="audio/*" style="display: none;">
+                        <button id="uploadBtn" class="btn upload-btn">
+                            <span class="btn-icon">📁</span>
+                            <span class="btn-text">Upload Audio</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="transcript-section" id="transcriptSection" style="display: none;">
+                    <h3>Transcribed Text:</h3>
+                    <div class="transcript-box" id="transcriptBox"></div>
+                    <div class="transcript-controls">
+                        <button id="sendToAI" class="btn send-btn">Send to AI</button>
+                        <button id="editTranscript" class="btn edit-btn">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loadingText">Processing...</p>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
